@@ -1,0 +1,100 @@
+
+<div>
+    <h1>INCOME DETAILS</h1>
+    <table class="table" border="2">
+        <thead>
+            <tr>
+                <th>Income ID</th>
+                <th>Property Location</th>
+                <th>Property Name</th> 
+                <th>Estimated Amount</th>
+                <th>Type of Employment</th>
+                <th>Retirement age</th>
+                <th>Organization Type</th>                          
+                <th>Employer Name</th>
+                <th>Monthly Income</th>
+                <th>User ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let i of incomes">
+                <td>{{i.incomeId}}</td>
+                <td>{{i.propertyLocation}}</td>
+                <td>{{i.propertyName}}</td>
+                <td>{{i.estimatedAmount}}</td>
+                <td>{{i.typeOfEmployment}}</td>
+                <td>{{i.retirementAge}}</td>
+                <td>{{i.organizationType}}</td>
+                <td>{{i.employerName }}</td>
+                <td>{{i.monthlyIncome}}</td>
+                <td>{{i.userId}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h1>LOAN DETAILS</h1>
+    <table class="table" border="2">
+        <thead>
+            <tr>
+                <th>loan ID</th>
+                <th>Maximum Loan Amount Grantable</th>
+                <th>Interest Rate</th>                           
+                <th>Tenure</th> 
+                <th>Loan Amount</th> 
+                <th>User ID</th> 
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of loans">
+                <td>{{l.lid}}</td>
+                <td>{{l.maxLoanAmountGrantable}}</td>
+                <td>{{l.interestRate}}</td>
+                <td>{{l.tenure}}</td>
+                <td>{{l.loanAmount}}</td>
+                <td>{{l.userId}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h1>PERSONAL DETAILS</h1>
+    <table class="table" border="2">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>                           
+                <th>Email Id</th> 
+                <th>Password</th>
+                <th>Confirm Password</th>
+                <th>Phone Number</th>
+                <th>DOB</th>
+                <th>Gender</th> 
+                <th>Nationality</th>
+                <th>Aadhar Number</th>
+                <th>PAN Number</th>
+                <th>User ID</th>
+                <th>Application Number</th>
+                <th>Loan Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of personals">
+                <td>{{p.firstName}}</td>
+                <td>{{p.middleName}}</td>
+                <td>{{p.lastName}}</td>
+                <td>{{p.emailId}</td>
+                <td>{{p.password }}</td>
+                <td>{{p.confirmPassword }}</td>
+                <td>{{p.phoneNumber}}</td>
+                <td>{{p.dateOfBirth}}</td>
+                <td>{{p.gender}}</td>
+                <td>{{p.nationality }}</td>
+                <td>{{p.aadharNo }}</td>
+                <td>{{p.panNo }}</td>
+                <td>{{p.userId!}}</td>
+                <td>{{p.applicationNumber}}</td>
+                <td>{{p.loanStatus}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

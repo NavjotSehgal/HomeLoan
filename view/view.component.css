@@ -1,0 +1,20 @@
+h1
+{
+    text-align: center;
+}
+.table
+{
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  border-spacing: 10px 10px;
+}
+th
+{
+    text-align: center;
+    background-color: darkgray;
+}
+td
+{
+    text-align: center;
+}
