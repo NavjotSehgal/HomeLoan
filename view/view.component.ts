@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ApiCallService } from '../api-call.service';
-import { IncomeDetails } from '../Models/income-details';
-import { LoanDetails } from '../Models/loan-details';
-import { PersonalDetails } from '../Models/personal-details';
+import { UserLogin } from '../Models/user-login';
 
 @Component({
   selector: 'app-view',
@@ -10,24 +10,16 @@ import { PersonalDetails } from '../Models/personal-details';
   styleUrls: ['./view.component.css']
 })
 export class ViewComponent implements OnInit {
-incomes:IncomeDetails[]=[];
-loans:LoanDetails[]=[];
-personals:PersonalDetails[]=[];
-  
- constructor(public service:ApiCallService) { }
 
-  ngOnInit(): void {
-    this.service.getAll().subscribe((data:IncomeDetails[])=>{
+  user:UserLogin[]=[];
+  constructor(private service: ApiCallService, private router:ActivatedRoute) { }
+ 
+
+  ngOnInit(): void 
+  {
+    this.service.getAll().subscribe((data:UserLogin[])=>{
       console.log(data)
-      this.incomes=data;
-    })
-    this.service.getAllloan().subscribe((data:LoanDetails[])=>{
-      console.log(data)
-      this.loans=data;
-    })
-    this.service.getAllpersonal().subscribe((data:PersonalDetails[])=>{
-      console.log(data)
-      this.personals=data;
+      this.user=data;
     })
   }
 
