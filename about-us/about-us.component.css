@@ -1,0 +1,68 @@
+.main{
+    text-align: center;
+    margin-left: -10px;
+    padding: 3px;
+    width: 100vw;
+    margin-top: -5px;
+}
+
+.content-about-us{
+    margin:10px;
+    padding: 10px;
+    background-color: rgb(255,255,255,0.8);
+}
+
+.content-our-exp{
+    margin:10px;
+    padding:10px;
+    background-color: rgb(255,255,255,0.8);
+}
+
+.exp{
+    text-align: left;
+    margin-left: 580px;
+}
+
+.content-our-beliefs{
+    margin:10px;
+    padding: 10px;
+    background-color: rgb(255,255,255,0.8);
+}
+
+.exp i{
+    color: green;
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+p{
+    margin:20px;
+}
+
+h1,h2{
+    text-decoration: underline;
+}
+
+.beliefs{
+    display:inline-table;
+}
+
+.content-our-beliefs i{
+    display: inline-block;
+    font-size: 30px;
+    margin-top:20px;
+    margin-bottom: -10px;
+    padding-top: 10px;
+}
+
+span{
+    display: block;
+    font-size: 20px;
+}
+
+/* .content-our-beliefs div{
+    display: inline-block;
+    margin:50px auto;
+    padding-left: 100px;
+    padding-right: 100px;
+} */
