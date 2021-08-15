@@ -1,0 +1,29 @@
+<div class="page">
+    <div class="box">Loan Applications</div>
+    <div class="content" >
+      <div class="text_center">
+           
+          <table id="customers">
+              <thead>
+                  <tr>
+                      <th>Name</th>
+                      <th>Application Number</th>
+                      <th>Phone</th>
+                      <th>View Details</th>
+                  </tr>
+              </thead>
+              <tbody>
+                     <tr *ngFor="let u of personal"> 
+                      <ng-container *ngIf="u.loanStatus==status">
+                      <td>{{u.firstName}} {{u.lastName}}</td>
+                      <td>{{u.applicationNumber}}</td>
+                      <td>{{u.phoneNumber}}</td>
+                      <td>
+                      <button [routerLink]="['/viewdetails/',u.userId]">View</button>  
+                    </td>  </ng-container>
+                  </tr> 
+          </table>
+      </div>
+  </div>
+</div>     
+  
