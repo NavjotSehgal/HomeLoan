@@ -1,0 +1,76 @@
+.page {
+    color: rgb(5, 2, 2);
+    padding: 0 1rem;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+  }
+  h2,h1{
+    text-align: center;
+  }
+
+th{
+  background-color:rgb(34, 27, 75);
+  color: white;
+  padding-bottom: -20px;
+  padding: auto;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+    .content {
+      min-height: calc(100vh - 178px);
+      border-radius: 10px;
+      margin-top: -2rem;
+      background: white;
+      color: black;
+      font-size: 20px;}
+      .data {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+.text_center{
+    padding-top: 10px;
+    color: rgb(34, 27, 75);
+    text-align: left;
+    font-size: 15px;
+    width: auto;
+    padding: 10px;
+}
+ table{
+  font-family: verdana; 
+  color:rgb(10, 10, 10); 
+  font-size: 16px; 
+  margin: 1px;
+ }
+ 
+ label{
+  width: 100%;
+  margin-bottom: -10px;
+  padding: 6px 6px;
+  border: slategray;
+ }
+.app_btn{
+  text-align: center;
+  background-color: rgb(69, 156, 81);
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  color: #f1f5f9;
+  font-size: 22px;
+}
+.rej_btn{
+  text-align: center;
+  background-color: rgb(192, 65, 86);
+  width: 200px;
+  height: 40px;
+  margin: 10px;
+  color: #f1f5f9;
+  font-size: 22px;
+}
+.center {
+  display: flex;
+justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}

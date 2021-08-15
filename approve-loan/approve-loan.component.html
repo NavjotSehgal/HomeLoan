@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="page">
+    <h1>Application Details</h1>
+    
+<div>
+
+<table  class="w3-table w3-bordered" >
+  <tr>
+    <th colspan="2"><h2>Income Details</h2></th>
+    
+  </tr>
+ <tr>
+  <td style="width:50%">Property Location</td>
+  <td><label>: {{incomeform.controls['propertyLocation'].value}}</label>
+  </td>
+  </tr>
+
+   <tr>
+  <td>Property Name</td>
+  <td><label>: {{incomeform.controls['propertyName'].value}}</label>  </td>
+  </tr>
+
+   <tr>
+  <td>Estimated Amount</td>
+  <td><label>: {{incomeform.controls['estimatedAmount'].value}}</label> </td>
+ </tr>
+   
+  <tr>
+  <td>Type of Employment</td>
+  <td><label formControlName="typeofEmployment">: {{incomeform.controls['typeofEmployment'].value}}</label>  </td>
+  </tr>
+
+  <tr>
+    <td>Retirement age</td>
+    <td> <label>: {{incomeform.controls['retirementage'].value}}</label>   </td>
+    </tr>
+     <tr>
+    <td>Organization Type</td>
+    <td><label>: {{incomeform.controls['organizationType'].value}}</label>  </td>
+    </tr>
+    
+    <tr>
+    <td>Employer Name</td>
+    <td><label>: {{incomeform.controls['employerName'].value}} </label></td>  </tr>
+
+    <tr>
+      <td>Monthly Income</td>
+      <td><label>: {{incomeform.controls['monthlyIncome'].value}} </label></td>  </tr>
+   
+  </table>
+</div>
+
+ <div>
+
+
+  <table  class="w3-table w3-bordered">
+    <tr>
+      <th colspan="2"><h2>Loan Details</h2></th>
+    </tr>
+    <tr>
+     <td style="width:50%">Max Loan Amount Grantable</td>
+     <td><label>: {{loanform.controls['maxLoanAmountGrantable'].value}}</label>
+     </td>
+     </tr>
+       <tr>
+     <td>Interest Rate</td>
+     <td><label>: {{loanform.controls['interestRate'].value}} </label> </td> 
+     </tr>
+       <tr>
+     <td>Tenure</td>
+     <td><label>: {{loanform.controls['tenure'].value}} </label></td>  </tr>
+      <tr>
+     <td>Loan Amount</td>
+     <td><label>: {{loanform.controls['loanAmount'].value}}</label>  </td>
+     </tr>
+     </table>
+ </div>
+
+ <div>
+ 
+  <table  class="w3-table w3-bordered" >
+    <tr>
+      <th colspan="2"><h2>Personal Details</h2></th>   
+    </tr>
+    <tr>
+     <td style="width: 50%;">First Name</td>
+     <td><label>: {{personalform.controls['firstName'].value}}</label>
+     </td>
+     </tr>
+       <tr>
+     <td>Middle Name</td>
+     <td><label>: {{personalform.controls['middleName'].value}}</label>  </td>
+     </tr>
+       <tr>
+     <td>Last Name</td>
+     <td><label>: {{personalform.controls['lastName'].value}}</label> </td> </tr>
+      <tr>
+     <td>Email ID</td>
+     <td><label>: {{personalform.controls['emailID'].value}}</label></td> 
+     </tr>
+     <tr>
+      <td>Password</td>
+      <td><label>: {{personalform.controls['password'].value}}</label>
+      </td>
+      </tr>
+     <tr>
+      <td>Phone Number</td>
+      <td><label>: {{personalform.controls['phoneNumber'].value}}</label>
+      </td>
+      </tr>
+        <tr>
+      <td>Date of Birth</td>
+      <td><label>: {{personalform.controls['dateofBirth'].value}}</label>  </td>
+      </tr>
+        <tr>
+      <td>Gender</td>
+      <td><label>: {{personalform.controls['gender'].value}}</label> </td> </tr>
+       <tr>
+      <td>Nationality</td>
+      <td><label>: {{personalform.controls['nationality'].value}}</label>  </td>
+      </tr>
+      <tr>
+        <td>Aadhar Number</td>
+        <td><label>: {{personalform.controls['aadharNo'].value}}</label>
+        </td>
+        </tr>
+          <tr>
+        <td>Pan Number</td>
+        <td><label>: {{personalform.controls['panNo'].value}}</label>  </td>
+        </tr>
+     </table>
+
+ </div>
+ <div>
+ 
+  <table class="w3-table w3-bordered">
+    <tr>
+      <th colspan="2"><h2>Documets Details</h2></th>
+      
+    </tr>
+  <tr>
+    <td style="width:50%">Pan Card</td>
+    <td><label>: Pan_Card.pdf</label>  </td>
+    </tr>
+      <tr>
+    <td>Voter Id</td>
+    <td><label>: Voter_Id.pdf</label></td>  </tr>
+     <tr>
+    <td>Salary Slip</td>
+    <td><label>: salary_slip.pdf</label>  </td>
+    </tr>
+    <tr>
+      <td>LOA</td>
+      <td><label>: Loa.pdf</label>
+      </td>
+      </tr>
+        <tr>
+      <td>NOC from Builder</td>
+      <td><label>: NOC_from_Builder.pdf</label>  </td>
+      </tr>
+  
+          <tr>
+            <td>Agreement To Sale</td>
+            <td><label>: Agreement_To_Sale.pdf</label>
+            </td>
+            </tr>
+          </table>
+ </div>
+<div style="text-align: center; font-size: 20px; padding:20px;">
+  <span *ngIf="loanform.get('maxLoanAmountGrantable')?.value < loanform.get('loanAmount')?.value">
+    The applicant is <b>Not Eligible</b> for the loan
+  </span>
+  <span *ngIf="loanform.get('maxLoanAmountGrantable')?.value>=loanform.get('loanAmount')?.value">
+    The applicant is <b>Eligible</b> for the loan
+  </span>  
+ <div class="center">
+  <button class="app_btn" (click)="submit()" *ngIf="loanform.get('maxLoanAmountGrantable')?.value >= loanform.get('loanAmount')?.value" >Approve</button>
+  <button class="rej_btn" (click)="Reject()" >Reject</button>
+</div>
+</div>
+ </div>
+  
