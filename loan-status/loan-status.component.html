@@ -1,0 +1,39 @@
+<div class="status">
+    <div class="status-creds">
+        <h2>Check Status</h2>
+        <form [formGroup]="StatusForm" (ngSubmit)="Submit()">
+            <label for="ApplicationNo">Application Number: </label>
+            <input type="text" id="ApplicationNo" name="ApplicationNo" placeholder="Enter your application number" formControlName="applicationNo" #name1/>
+            <div *ngIf="!app?.valid && (app?.touched || app?.dirty)">
+                <div *ngIf="app?.errors?.required">
+                    *Application number is mandatory
+                </div>
+            </div>
+    
+            <label for="Password">Password:</label>
+            <input [type]="kind" ud="Password" name="Password" placeholder="Enter your password" formControlName="Password" #pass1/>
+            <div *ngIf="!pass?.valid && (pass?.touched || pass?.dirty)">
+                <div *ngIf="pass?.errors?.required">
+                    *Password is required
+                </div>
+            </div>
+    
+            <input id="showInput" type="checkbox" name="showPassword" (click)="ShowHide()"/>
+            <label id="showLabel" for="showPassword">Show Password</label>
+            <button type="submit">Enter</button>
+        </form>  
+    </div>
+    
+    <div class="status-details" [style]="'display:'+hidestatus">
+        <label for="status">Your application is <span>{{status | lowercase}}</span></label>
+<!--         <input type="text" value={{status}} readonly />
+ -->        <div class="account-info" [style]="'display:'+accountstatus">
+            <label for="accountNo">Your account number is <span>{{accDetails.loanNo}}</span></label>
+<!--             <input type="text" name="accountNo" [value]="accDetails.loanNo" readonly/>
+ -->            <!-- <p>
+                Click on the button below to check your account status
+            </p> -->
+            <button [routerLink]="['AccountDetails/',accDetails.userId]">View Details</button>
+        </div>
+    </div>
+    </div>
