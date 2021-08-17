@@ -1,0 +1,44 @@
+.Calculators{
+    height: 100vh;
+    margin-top: 4%;
+}
+.eligible{
+    border: 1px rgb(0, 183, 255) solid;
+    border-radius: 5px;
+width: 450px;
+margin-left: 200px;
+margin-top: 50px;
+padding: 40px;
+float: left;
+height: 600px;
+background-color: rgb(255,255,255,0.8);
+}
+.emiDesign{
+
+background-color: rgb(255,255,255,0.8);
+border: 1px rgb(0, 183, 255) solid;
+border-radius: 5px;
+width: 450px;
+margin-right: 200px;
+margin-top: 50px;
+padding: 40px;
+float: right;
+}
+button{
+    background-color: #87CEEB;
+    width: 120px;
+    height: 40px;
+    
+}
+input{
+    padding: 20px;
+    width: 370px;
+    height: 20px;
+}
+h2{
+    text-align: center;
+    border: 1px gray;
+    border-radius: 5px;
+    background-color: #87CEEB;
+    
+}

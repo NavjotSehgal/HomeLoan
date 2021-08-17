@@ -1,0 +1,66 @@
+
+<div class="Calculators">
+  <div class="eligibility">
+
+<form [formGroup]="EligibilityCalculator" (ngSubmit)="CalculateEligibility()">
+    <div class="eligible" id="eg1">
+      <h2>Eligibility Calculator</h2>
+      <p>
+        <label for="income">Monthly Income</label>
+    </p>
+    <p>
+        <input type="number" id="income" formControlName="income" >
+      </p>
+      <!-- <p>
+        <label for="interest">ROI</label>
+    </p>
+    <p>
+        <input type="number" id="interest" formControlName="interest" placeholder="Please enter the Rate Of Interest">
+    </p>  -->
+      <p>
+        <button type="button" (click)="CalculateEligibility()">Calculate</button>
+      </p>
+      <p>
+        <label for="eligibility">Eligibility</label>
+    </p>
+    <p>
+        <input type="text" id="eligibility" formControlName="eligibility" [(ngModel)]="eligibilityDis" readonly>
+      </p>
+    </div>
+  </form>
+</div>
+  
+  <div class="emiDesign">
+  <h2>EMI Calculator</h2>
+  <form [formGroup]="EMICalculator" (ngSubmit)="CalculateEmi()">
+    <p>
+      <label for="Loan">Loan Amount</label>
+    </p>
+    <p>
+      <input type="number" id="Loan" formControlName="loan">
+    </p>
+    <p>
+      <label for="tenure">Tenure</label>
+    </p>
+    <p>
+      <input type="number" id="tenure" formControlName="tenure"> 
+    </p>
+    <p>
+      <label for="roi">ROI</label>
+    </p>
+    <p>
+      <input type="number" id="roi" formControlName="roi" readonly>
+    </p>
+    <p>
+      <button type="button" (click)="CalculateEmi()">Calculate</button>
+    </p>
+    <p>
+      <label for="emi">EMI</label>
+    </p>
+    <p>
+      <input type="text" id="emi" formControlName="emi1" [(ngModel)]="emi" readonly>
+    </p>
+  </form>
+</div>
+
+</div>
