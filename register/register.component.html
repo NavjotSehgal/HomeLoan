@@ -1,0 +1,78 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+</head>
+
+<div class="main">
+<div id="reg-forms">
+    <h2>CREATE ACCOUNT</h2>
+    <form [formGroup]="Registeration" (ngSubmit)="Register()" class="form-signup">
+        <input name ="name" type="text" id="user-name" class="form-control" placeholder="Full name" formControlName="uName">
+        <div *ngIf="!name?.valid && (name?.dirty ||name?.touched)" style="color: red;">
+            <div *ngIf="name?.errors?.required">
+                *Name is Mandatory
+            </div>
+        </div>
+        <input name ="username" type="text" id="user-email" class="form-control" placeholder="Username" formControlName="userId">
+        <div *ngIf="!id?.valid && (id?.dirty ||id?.touched)">
+            <div *ngIf="id?.errors?.required" style="color: red;">
+                *Username is Mandatory
+            </div>
+            <div *ngIf="id?.errors?.minlength" style="color: red;">
+                *Username should be atleast 8 characters.
+            </div>
+        </div>
+        <input name ="password" type="password" id="user-pass" class="form-control" placeholder="Password" formControlName="userPass">
+        <div *ngIf="!pass?.valid && (pass?.dirty ||pass?.touched)">
+            <div *ngIf="pass?.errors?.required" style="color: red;">
+                *Password is Mandatory
+            </div>
+            <div *ngIf="pass?.errors?.pattern" style="color: red;">
+                *Password Must contain at least one number one Uppercase and lowercase letter, one special character and at least 8 or more characters
+                </div>
+        </div>
+        <input name ="conpassword" type="password" id="user-conpass" class="form-control" placeholder="Confirm Password" formControlName="userConPass">
+        <div *ngIf="!Cpass?.valid && (Cpass?.dirty ||Cpass?.touched)">
+            <div *ngIf="pass?.errors?.required" style="color: red;">
+                *Please confirm the password
+            </div>
+        </div>
+            <div *ngIf="!(Cpass?.value===pass?.value) && (Cpass?.dirty ||Cpass?.touched)" style="color: red;">
+                *Password does not match
+            </div>
+        
+        <input name ="email" type="email" id="user-mail" class="form-control" placeholder="Email-ID" formControlName="email">
+        <div *ngIf="!mail?.valid && (mail?.dirty ||mail?.touched)">
+            <div *ngIf="mail?.errors?.required" style="color: red;">
+                *Email is Mandatory
+            </div>
+            <div *ngIf="mail?.errors?.email">
+                *Email not valid.
+           </div>
+        </div>
+        <input name ="phone" type="text" id="user-mobile" class="form-control" placeholder="Phone Number" pattern="[0-9]{1,}" formControlName="phone"> 
+        <div *ngIf="!phone?.valid && (phone?.dirty ||phone?.touched)">
+            <div *ngIf="phone?.errors?.required" style="color: red;">
+                *Phone Number is Mandatory
+            </div>
+            <div *ngIf="phone?.errors?.pattern" style="color: red;">
+                *Phone number should not have any text
+            </div>
+            <div *ngIf="(phone?.errors?.maxlength) || (phone?.errors?.minlength)" style="color: red;">
+                *Phone number should only be 10 digits
+            </div>
+        </div>
+        <button class="btn btn-primary btn-block" type="submit" [disabled]="!Registeration.valid" ><i class="fas fa-user-plus"></i> Sign Up</button>
+        <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
+    </form>
+
+</div>
+<div class= "textcontent">
+  
+    Don't Miss Your Dream Home! <br>
+  
+    <span style="font-weight:lighter; font-size:40px ;">Register now and avail a home loan for your Dream Home!</span>
+     
+</div>
+</div>
