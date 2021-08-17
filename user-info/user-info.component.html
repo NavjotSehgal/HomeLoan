@@ -1,0 +1,258 @@
+
+<div *ngIf= "status">
+  <div class="row" style="margin-bottom: 4%;">
+      <div class="col-md-12 col-md-offset-3" style="margin-bottom: 4%;">
+          <form [formGroup]="addUserForm" id="msform" >
+              <!-- progressbar -->
+              <ul id="progressbar">
+                  <li [ngClass]="step>=1 ? 'active ' : 'inactive'">Income Details</li>
+                  <li [ngClass]="step>=2 ? 'active' : 'inactive'">Loan Details</li>
+                  <li [ngClass]="step>=3 ? 'active' : 'inactive'">Personal Details</li>
+                  <li [ngClass]="step==4 ? 'active' : 'inactive'">Upload Documnets</li>
+            
+              </ul>
+            
+                <!-- fieldsets -->
+    
+                <fieldset formGroupName="incomedetailsForm" *ngIf="step == 1" >
+                  <h2 class="fs-title">Income Details</h2>
+                  <input type="text" name="propertyLocation" formControlName="propertyLocation"  placeholder="Property Location"  />
+                  <div *ngIf="!propertyLocation?.valid && (propertyLocation?.dirty || propertyLocation?.touched)">
+                    <div *ngIf="propertyLocation?.errors?.required"  style="color: red;">
+                      Property Location is mandatory
+                    </div>
+                    
+                  </div>
+  
+                  <input type="text" formControlName="propertyName" name="propertyName" placeholder="Property Name"/>
+                  <div *ngIf="!propertyName?.valid && (propertyName?.dirty || propertyName?.touched)">
+                    <div *ngIf="propertyName?.errors?.required"  style="color: red;">
+                      Property Name is mandatory
+                    </div>
+                    <div *ngIf="propertyName?.errors?.pattern" style="color: red;">
+                      *Property Name Must contain all alphabet
+                    </div>
+                  </div>
+  
+                  <input type="number" formControlName="estimatedAmount" required name="estimatedAmount" placeholder="Estimated Amount"/>
+                  <div *ngIf="!estimatedAmount?.valid && (estimatedAmount?.dirty || estimatedAmount?.touched)">
+                    <div *ngIf="estimatedAmount?.errors?.required"  style="color: red;">
+                      Estimated Amount is mandatory
+                    </div>
+                    <div *ngIf="estimatedAmount?.errors?.pattern" style="color: red;">
+                      *Estimated Amount must be numeric
+                  </div>
+                  </div>
+                  <div  style="border: 1px solid rgb(199, 193, 193) ; margin-bottom: 10px;">
+                    <p style="margin-left: 15px;">Select Type of Employment</p>
+                    <div class="center" style="margin-left: -20px; ">
+                      <input type="radio" class="type" id="sal" formControlName="typeOfEmployment" value="Salaried"/><label for="sal">Salaried</label>
+               
+                      <input type="radio" class="type" id="self" formControlName="typeOfEmployment" value="SelfEmployed"/><label for="self" style="width: 400px;">Self Employed</label>
+                     </div>
+                 </div>
+            
+                 
+                 <input type="number" formControlName="retirementAge" name="retirementAge" placeholder="Retirement age"/>
+                 <div *ngIf="!retirementAge?.valid && (retirementAge?.dirty || retirementAge?.touched)">
+                   <div *ngIf="retirementAge?.errors?.required"  style="color: red;">
+                    Retirement Age is mandatory
+                   </div>
+                 </div>
+  
+                 <input type="text" formControlName="organizationType" name="organizationType" placeholder="Organization Type" pattern="[a-zA-Z][a-zA-Z]{1,}"/>
+                 <div *ngIf="!organizationType?.valid && (organizationType?.dirty || organizationType?.touched)">
+                   <div *ngIf="organizationType?.errors?.required" style="color: red;">
+                    Organization Type is mandatory
+                   </div>
+                   <div *ngIf="organizationType?.errors?.pattern" style="color: red;">
+                    *Organization Type Must contain all alphabet
+                  </div>
+                 </div>
+                 <input type="text" formControlName="employerName" name="employerName" placeholder="Employer Name"/>
+                 <div *ngIf="!employerName?.valid && (employerName?.dirty || employerName?.touched)">
+                   <div *ngIf="employerName?.errors?.required" style="color: red;">
+                    Employer Name is mandatory
+                   </div>
+                   <div *ngIf="employerName?.errors?.pattern" style="color: red;">
+                    *Employer Name Must contain all alphabet
+                  </div>
+                 </div>
+  
+                 <input type="number" formControlName="monthlyIncome" name="monthlyIncome" placeholder="Monthly Income"/>
+                 <div *ngIf="!monthlyIncome?.valid && (monthlyIncome?.dirty || monthlyIncome?.touched)">
+                   <div *ngIf="monthlyIncome?.errors?.required"style="color: red;">
+                    Monthly Income is mandatory
+                   </div>
+                 </div>
+                 <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
+              </fieldset>
+  
+  
+  
+  <!-- =====================================LOAN DETAILS==================================================================== -->
+  <fieldset formGroupName="loandetailsForm" *ngIf="step == 2" >
+    <h2 class="fs-title">Loan Details</h2>
+    <input type="number" formControlName="maxLoanAmountGrantable"  placeholder="Max Loan Amount Grantable" readonly [(ngModel)]="maxLoan"/>
+  
+  
+    <input type="number" formControlName="interestRate"  placeholder="Interest Rate" readonly [(ngModel)]="ROI"/>
+  
+    <input type="number" formControlName="tenure"  placeholder="Tenure" [(ngModel)]="duration" (ngModelChange)="changeroi()"/>
+    <div *ngIf="!tenure?.valid && (tenure?.dirty || tenure?.touched)">
+      <div *ngIf="tenure?.errors?.required" style="color: red;">
+        Tenure is mandatory
+      </div>
+    </div>
+  
+    <input type="number" formControlName="loanAmount"  placeholder="Loan Amount"/>
+    <div *ngIf="!loanAmount?.valid && (loanAmount?.dirty || loanAmount?.touched)">
+      <div *ngIf="loanAmount?.errors?.required" style="color: red;">
+        Loan Amount is mandatory
+      </div>
+    </div>
+  
+    <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+    <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
+  </fieldset>
+          
+  <!-- ==================================PERSONAL DETAILS================================================ -->
+  <fieldset formGroupName="personaldetailsForm" *ngIf="step == 3">
+    <h2 class="fs-title">Personal Details</h2>
+    <input type="text" formControlName="firstName" placeholder="First Name"/>
+    <div *ngIf="!firstName?.valid && (firstName?.dirty || firstName?.touched)">
+      <div *ngIf="firstName?.errors?.required" style="color: red;">
+        First Name is mandatory
+      </div>
+      <div *ngIf="firstName?.errors?.pattern" style="color: red;">
+        *First Name Must contain all alphabet
+      </div>
+    </div>
+  
+    <input type="text" formControlName="middleName"  placeholder="Middle Name"/>
+    <div *ngIf="!middleName?.valid && (middleName?.dirty || middleName?.touched)">
+      <div *ngIf="middleName?.errors?.required" style="color: red;">
+        Middle Name is mandatory
+      </div>
+      <div *ngIf="middleName?.errors?.pattern" style="color: red;">
+        *Middle Name Must contain all alphabet
+      </div>
+    </div>
+  
+    <input type="text" formControlName="lastName" placeholder="Last Name"/>
+    <div *ngIf="!lastName?.valid && (lastName?.dirty || lastName?.touched)">
+      <div *ngIf="lastName?.errors?.required" style="color: red;">
+        Last Name is mandatory
+      </div>
+      <div *ngIf="lastName?.errors?.pattern" style="color: red;">
+        *Last Name Must contain all alphabet
+      </div>
+    </div>
+  
+    <input type="text" formControlName="emailId" placeholder="Email ID"/>
+    <div *ngIf="!emailId?.valid && (emailId?.dirty || emailId?.touched)">
+      <div *ngIf="emailId?.errors?.required" style="color: red;">
+        *Email Id is mandatory
+      </div>
+    </div>
+  
+    <input type="password" formControlName="password" placeholder="Password"/>
+    <div *ngIf="!password?.valid && (password?.dirty || password?.touched)">
+      <div *ngIf="password?.errors?.required" style="color: red;">
+        *Password is mandatory
+      </div>
+      <div *ngIf="password?.errors?.pattern" style="color: red;">
+        *Password Must contain at least one number one Uppercase and lowercase letter, one special character and at least 8 or more characters
+      </div>
+    </div>
+  
+    <input type="password" formControlName="confirmPassword" placeholder="Confirm Password"/>
+    <div *ngIf="!confirmPassword?.valid && (confirmPassword?.dirty || confirmPassword?.touched)">
+      <div *ngIf="confirmPassword?.errors?.required" style="color: red;">
+        *Confirm Password is mandatory
+      </div> 
+    </div>
+    <div *ngIf="!(confirmPassword.value=== password.value) && (confirmPassword?.dirty || confirmPassword?.touched)" style="color: red;">
+      *Password doesn't match
+    </div>
+  
+    <input type="text" formControlName="phoneNumber" placeholder="Phone Number" pattern="[0-9]{1,}"/>
+    <div *ngIf="!phoneNumber?.valid && (phoneNumber?.dirty || phoneNumber?.touched)">
+      <div *ngIf="phoneNumber?.errors?.required" style="color: red;">
+        *Phone Number is mandatory
+      </div>
+      <div *ngIf="phoneNumber?.errors?.pattern" style="color: red;" >
+        *Phone Number must contain all numeric value
+    </div>
+    </div>
+  
+    <input type="date" formControlName="dateOfBirth" placeholder="Date of Birth"/>
+    <div *ngIf="!dateOfBirth?.valid && (dateOfBirth?.dirty || dateOfBirth?.touched)" style="color: red;">
+      <div *ngIf="dateOfBirth?.errors?.required">
+        Date Of Birth is mandatory
+      </div>
+    </div>
+  
+    <div  style="border: 1px solid rgb(199, 193, 193) ; margin-bottom: 10px;">
+      <p style="margin-left: 15px;">Gender</p>
+      <div class="center" style="margin-left: -10px; ">
+        <input type="radio" class="type" id="male" formControlName="gender" value="Male"/><label for="male">Male</label>
+        <input type="radio" class="type" id="female" formControlName="gender" value="Female"/><label for="female">Female</label>
+        <input type="radio" class="type" id="others" formControlName="gender" value="Others"/><label for="others">Others</label>
+       </div>
+   </div>
+    <input type="text" formControlName="nationality" placeholder="Nationality"/>
+    <div *ngIf="!nationality?.valid && (nationality?.dirty || nationality?.touched)">
+      <div *ngIf="nationality?.errors?.required" style="color: red;">
+        Nationality is mandatory
+      </div>
+      <div *ngIf="nationality?.errors?.pattern" style="color: red;">
+        *Narionality Must contain all alphabet
+      </div>
+    </div>
+  
+    <input type="text" formControlName="aadharNo" placeholder="Aadhar No" pattern="^[0-9]*$"/>
+    <div *ngIf="!aadharNo?.valid && (aadharNo?.dirty || aadharNo?.touched)">
+      <div *ngIf="aadharNo?.errors?.required" style="color: red;">
+        Aadhar Number is mandatory
+      </div>
+      <div *ngIf="aadharNo?.errors?.pattern" style="color: red;">
+        *Aadhar Number must be numeric
+    </div>
+    </div>
+  
+    <input type="text" formControlName="panNo" placeholder="Pan No"/>
+    <div *ngIf="!panNo?.valid && (panNo?.dirty || panNo?.touched)">
+      <div *ngIf="panNo?.errors?.required" style="color: red;">
+        PAN Number is mandatory
+      </div>
+    </div>
+  
+    <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+    <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
+  </fieldset>
+          
+            <fieldset *ngIf="step == 4">
+                <h2 class="fs-title">Please Produce these Documnets at your Appointment Date</h2>
+                <input type="button" class="upload-btn" value="Pan Card"/>
+              
+                <input type="button" class="upload-btn" value="Voter Id"/>
+             
+                <input type="button" class="upload-btn" value="Salary Slip"/>
+             
+                <input type="button" class="upload-btn" value="LOA"/>
+             
+                <input type="button" class="upload-btn" value="NOC from Builder"/>
+    
+                <input type="button" class="upload-btn" value="Agreement To Sale"/>
+             
+                <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+              
+                <input (click)="submitForm()" type="submit" name="submit" class="submitForm action-button" value="Submit"/>
+              </fieldset>
+              
+          </form>     
+      </div>
+    </div>
+  </div>
+  
